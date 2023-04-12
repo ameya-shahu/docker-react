@@ -8,10 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Run testcases
-        uses: actions/checkout@v2
-        run: docker build -t amsha30/react-test -f Dockerfile.dev .
-        run: docker run -e CI=true amsha30/react-test npm test
+      - uses: actions/checkout@v2
+      - run: docker build -t amsha30/react-test -f Dockerfile.dev .
+      - run: docker run -e CI=true amsha30/react-test npm test
 
       - name: Generate Deployment package
         run: zip -r deploy.zip . -x '*.git'
